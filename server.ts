@@ -5,6 +5,9 @@ const authMiddleware = require('./middleware/auth.middleware')
 // import './core/db'
 import { UserCtrl } from './controllers/UserController'
 import mongoose, { ConnectOptions } from 'mongoose'
+import { OptionCtrl } from './controllers/OptionsController'
+import { CategoryCtrl } from './controllers/CategoryController'
+import { AdCtrl } from './controllers/AdController'
 dotenv.config()
 const app = express()
 
@@ -25,6 +28,18 @@ app.get('/home', UserCtrl.index)
 app.post('/register', UserCtrl.register)
 app.get('/auth', authMiddleware,  UserCtrl.auth)
 app.post('/login', UserCtrl.login)
+
+// Options routes
+app.post('/create_option', OptionCtrl.createOption)
+app.get('/get_all_options', OptionCtrl.getAllOptions)
+
+//  Categories routes
+app.post('/create_category', CategoryCtrl.createCategory)
+app.get('/get_all_categories', CategoryCtrl.getAllCategories)
+app.post('/get_category', CategoryCtrl.getCategory)
+
+// Ads routes
+app.get('/get_all_ads', AdCtrl.getAllAds)
 
 const start = async () => {
     try {
@@ -49,3 +64,6 @@ const start = async () => {
 // })
 
 start()
+
+
+
