@@ -1,7 +1,9 @@
 import express from 'express'
 import dotenv from 'dotenv'
+const cors = require('cors')
 const corsMiddleware = require('./middleware/cors.middleware')
 const authMiddleware = require('./middleware/auth.middleware')
+const fileuploader = require('express-fileupload')
 // import './core/db'
 import { UserCtrl } from './controllers/UserController'
 import mongoose, { ConnectOptions } from 'mongoose'
@@ -12,14 +14,17 @@ dotenv.config()
 const app = express()
 
 mongoose.set('strictQuery', true);
+app.use(fileuploader())
 
+app.use(cors())
 // app.use(corsMiddleware)
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Origin, X-Requested-With, Accept");
-    next();
-})
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
+//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Origin, X-Requested-With, Accept");
+//     next();
+// })
+
 app.use(express.json())
 
 
@@ -40,6 +45,7 @@ app.post('/get_category', CategoryCtrl.getCategory)
 
 // Ads routes
 app.get('/get_all_ads', AdCtrl.getAllAds)
+app.post('/create_new_ad', AdCtrl.createAd)
 
 const start = async () => {
     try {

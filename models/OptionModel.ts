@@ -10,7 +10,7 @@ export interface OptionModelInterface {
 
 }
 
-export type CategoryModelDocumentInterface = OptionModelInterface & Document
+export type OptionModelDocumentInterface = OptionModelInterface & Document
 
 export const OptionSchema = new Schema({
     name: {
