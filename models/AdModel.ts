@@ -26,12 +26,13 @@ export const AdSchema = new Schema({
         require: true,
         type: String
     },
-    photos: {
-        require: true,
-        type: Array
-    },
+    photos: [{type: Schema.Types.ObjectId, ref: 'Photo'}],
     category: {type: Schema.Types.ObjectId, ref: 'Category', require: true},
-    options: Array,
+    // options: Array,
+    options: [{
+        id: {type: Schema.Types.ObjectId, ref: 'Option'},
+        value: []
+    }],
     place: String,
     price: {type: Object},
     e_mail: String,

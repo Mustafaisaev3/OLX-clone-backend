@@ -21,4 +21,4 @@ export const PhotoSchema = new Schema({
     user: {type: objectId, ref: 'User'},
 }, {timestamps: true})
 
-export const PhotoModel = model('Photo', PhotoSchema)
+export const PhotoModel = model<PhotoModelDocumentInterface>('Photo', PhotoSchema)

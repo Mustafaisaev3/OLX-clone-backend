@@ -46,6 +46,8 @@ app.post('/get_category', CategoryCtrl.getCategory)
 // Ads routes
 app.get('/get_all_ads', AdCtrl.getAllAds)
 app.post('/create_new_ad', AdCtrl.createAd)
+// app.get('/getAd/:id', AdCtrl.getAd)
+app.post('/getAd', AdCtrl.getAd)
 
 const start = async () => {
     try {

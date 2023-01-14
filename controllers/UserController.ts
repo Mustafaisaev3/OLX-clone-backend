@@ -14,7 +14,7 @@ class UserController {
 
     async register (req: express.Request, res: express.Response) {
         try {
-            const { email, password } = req.body
+            const { email, password, phone } = req.body
 
             const isUser = await UserModel.findOne({email})
 
@@ -24,6 +24,7 @@ class UserController {
 
             const data = {
                 email,
+                phone,
                 password: hashPassword,
             }
 
