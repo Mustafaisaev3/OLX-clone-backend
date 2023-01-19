@@ -46,8 +46,12 @@ app.post('/get_category', CategoryCtrl.getCategory)
 // Ads routes
 app.get('/get_all_ads', AdCtrl.getAllAds)
 app.post('/create_new_ad', AdCtrl.createAd)
+app.delete('/deleteAd/:id', AdCtrl.deleteAd)
 // app.get('/getAd/:id', AdCtrl.getAd)
-app.post('/getAd', AdCtrl.getAd)
+app.get('/getAd/:id', AdCtrl.getAd)
+app.post('/getUserAds', AdCtrl.getUserAds)
+app.post('/deactivateAd', AdCtrl.deactivateAd)
+app.post('/activateAd', AdCtrl.activateAd)
 
 const start = async () => {
     try {

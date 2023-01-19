@@ -2,6 +2,7 @@ import { Schema, model, Document } from 'mongoose'
 
 export interface AdModelInterface {
     status: string,
+    active: boolean,
     title: string,
     description: string,
     photos: [],
@@ -18,6 +19,10 @@ export type AdModelDocumentInterface = AdModelInterface & Document
 
 export const AdSchema = new Schema({
     status: String,
+    active: {
+        type: Boolean,
+        default: true
+    },
     title: {
         require: true,
         type: String
