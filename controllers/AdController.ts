@@ -18,6 +18,7 @@ class AdController {
     async getAd (req: express.Request, res: express.Response) {
         try {
             const id = req.params.id
+            // const {adId} = req.body
             let ad = await AdModel.findOne({_id: id}).populate('user').populate('photos').populate('options.id')
             console.log(id, req.url)
             // const {id} = req.body
@@ -110,6 +111,7 @@ class AdController {
                     user: user
                 })
                 await dbPhoto.save()
+                // newAd.photos.push(dbPhoto._id)
                 newAd.photos.push(dbPhoto._id)
 
                 if(newAd.photos.length == photoObjArray.length){

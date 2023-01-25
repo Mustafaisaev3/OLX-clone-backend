@@ -10,6 +10,7 @@ import mongoose, { ConnectOptions } from 'mongoose'
 import { OptionCtrl } from './controllers/OptionsController'
 import { CategoryCtrl } from './controllers/CategoryController'
 import { AdCtrl } from './controllers/AdController'
+import { ChatCtrl } from './controllers/ChatController'
 dotenv.config()
 const app = express()
 
@@ -47,11 +48,16 @@ app.post('/get_category', CategoryCtrl.getCategory)
 app.get('/get_all_ads', AdCtrl.getAllAds)
 app.post('/create_new_ad', AdCtrl.createAd)
 app.delete('/deleteAd/:id', AdCtrl.deleteAd)
-// app.get('/getAd/:id', AdCtrl.getAd)
-app.get('/getAd/:id', AdCtrl.getAd)
+app.get('/ad/:id', AdCtrl.getAd)
+// app.post('/getAd', AdCtrl.getAd)
 app.post('/getUserAds', AdCtrl.getUserAds)
 app.post('/deactivateAd', AdCtrl.deactivateAd)
 app.post('/activateAd', AdCtrl.activateAd)
+
+// Chat routes
+app.post('/sendMessage', ChatCtrl.sendMessage)
+app.post('/getConversations', ChatCtrl.getUserConversations)
+app.post('/conversation', ChatCtrl.getConversation)
 
 const start = async () => {
     try {

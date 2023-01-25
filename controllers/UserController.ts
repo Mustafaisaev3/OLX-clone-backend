@@ -81,6 +81,7 @@ class UserController {
 
     async auth (req: express.Request, res: express.Response) {
         try {
+            // console.log(req.user.id, 'sssssssssss')
             //@ts-ignore
             const user = await UserModel.findOne({_id: req.user.id})
 
